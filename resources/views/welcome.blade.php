@@ -32,13 +32,50 @@
 
                     {!! Form::text('price', null, ['class' => 'form-control']) !!}
                 </div>  
+                <div class="form-group">
+                    {!! Form::hidden('created_at', now()) !!}
+                </div>
 
         </div>
         
-            <div class="form-group">
-                {!! Form::submit('Create Data', ['class'=> 'btn btn-primary col-sm-6'])!!}
-            </div>
+        <div class="form-group">
+            {!! Form::submit('Create Data', ['class'=> 'btn btn-primary col-sm-6'])!!}
+        </div>
             {!! Form::close() !!}
+
+        <div>
+
+        <div>
+            <h1>Data</h1>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity In Stock</th>
+                        <th>Price Per Item</th>
+                        <th>Date/Time Submitted</th>
+                        <th>Total Value of Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($data_objects)
+
+                        @foreach($data_objects as $object)
+                        <tr>
+                            <td>{{$object->product_name}}</td>
+                            <td>{{$object->quantity}}</td>
+                            <td>{{$object->price}}</td>
+                            <td>{{$object->created_at}}</td>
+                            <td>{{$object->quantity * $object->price}}</td>
+                        </tr>
+                        @endforeach
+                    @else
+                        <h1>No Data</h1>
+                    @endif
+                </tbody>
+            </table>
+        </div>
         </div>
     </body>
 </html>

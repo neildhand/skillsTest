@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['uses'=>'DataController@index']);
 
 Route::post('data', [
     'uses' => 'DataController@store'

@@ -14,6 +14,9 @@ class DataController extends Controller
     public function index()
     {
         //
+        $json_file = file_get_contents('data.json');
+        $data_objects = json_decode($json_file)->data;
+        return view('welcome', compact('data_objects'));
     }
 
     /**
@@ -35,13 +38,16 @@ class DataController extends Controller
     public function store(Request $request)
     {
         //
+
+
         $data = $request->all();
         $json_file = file_get_contents('data.json');
         $tempArray = json_decode($json_file);
         array_push($tempArray->data, $data);
         $json_data = json_encode($tempArray);
         file_put_contents('data.json', $json_data);
-        return view('welcome');
+        $data_objects = json_decode($json_file)->data;
+        return redirect('/');
     }
 
     /**
