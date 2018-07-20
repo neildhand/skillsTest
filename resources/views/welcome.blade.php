@@ -9,8 +9,10 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     </head>
     <body>
+        <div class="container">
         <div class="row">
 
             {!! Form::open(['method'=>'POST', 'action' => 'DataController@store']) !!}
@@ -39,7 +41,7 @@
         </div>
         
         <div class="form-group">
-            {!! Form::submit('Create Data', ['class'=> 'btn btn-primary col-sm-6'])!!}
+            {!! Form::submit('Create Data', ['class'=> 'btn btn-primary'])!!}
         </div>
             {!! Form::close() !!}
 
@@ -77,5 +79,11 @@
             </table>
         </div>
         </div>
+    </div>
+
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     </body>
 </html>
